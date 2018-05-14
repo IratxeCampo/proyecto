@@ -2,6 +2,8 @@ package proyecto3;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,7 +23,21 @@ public class VentanaUsuario extends JFrame {
 		
 		panel.add(tUsuario, BorderLayout.CENTER);
 		panel.add(tContraseña, BorderLayout.CENTER);
-		
+		tUsuario.addFocusListener(new FocusListener() {
+			
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				if (tUsuario.getText().equals("")){
+				tUsuario.setText("");
+				}				
+			}
+			
+			@Override
+			public void focusGained(FocusEvent arg0) {
+				tUsuario.setText("");
+				
+			}
+		});
 	}
 	public static void main(String[] args) {
 		
