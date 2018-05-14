@@ -20,5 +20,9 @@ public class VentanaUsuario extends JFrame {
 		getContentPane().add(panel, BorderLayout.CENTER);
 		panel.add(tUsuario, BorderLayout.NORTH);
 		panel.add(tContraseña);
+		
+	}
+	public static void main(String[] args) {
+		
 	}
 }
