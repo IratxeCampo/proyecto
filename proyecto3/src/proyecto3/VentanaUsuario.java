@@ -14,12 +14,13 @@ public class VentanaUsuario extends JFrame {
 		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 		setSize( 640, 400 );
 		setLocationRelativeTo( null );
-		JTextField tUsuario = new JTextField();
-		JTextField tContraseña = new JTextField();
+		JTextField tUsuario = new JTextField("Introducir nick");
+		JTextField tContraseña = new JTextField("Introducir contraseña");
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.CENTER);
-		panel.add(tUsuario, BorderLayout.NORTH);
-		panel.add(tContraseña);
+		
+		panel.add(tUsuario, BorderLayout.CENTER);
+		panel.add(tContraseña, BorderLayout.CENTER);
 		
 	}
 	public static void main(String[] args) {
