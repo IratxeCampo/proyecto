@@ -28,13 +28,28 @@ public class VentanaUsuario extends JFrame {
 			@Override
 			public void focusLost(FocusEvent arg0) {
 				if (tUsuario.getText().equals("")){
-				tUsuario.setText("");
+				tUsuario.setText("Introducir nick");
 				}				
 			}
 			
 			@Override
 			public void focusGained(FocusEvent arg0) {
 				tUsuario.setText("");
+				
+			}
+		});
+		tContraseña.addFocusListener(new FocusListener() {
+			
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				if (tContraseña.getText().equals("")){
+				tContraseña.setText("Introducir contraseña");
+				}				
+			}
+			
+			@Override
+			public void focusGained(FocusEvent arg0) {
+				tContraseña.setText("");
 				
 			}
 		});
