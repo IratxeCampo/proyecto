@@ -38,7 +38,7 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 		
-bValorar.addActionListener(new ActionListener() {
+		bValorar.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {

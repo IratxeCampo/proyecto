@@ -10,12 +10,12 @@ public class Neo4j {
 		
 		Connection con = DriverManager.getConnection("jdbc:neo4j:http://localhost:7474", "neo4j", "123");
 		
-		String query = "Create (_0:Ciudad{name:"Luanda"})";
+		String query = "MATCH (h:Hotel)-[:ESTA_EN]->(c:Ciudad) return c.name";
 		try (PreparedStatement stmt = con.preparedStatement(query)) {
-			stmt.setString(1, "Luanda");
+			stmt.setString(0, "Luanda");
 			
 			try (ResultSet rs = stmt.executeQuery()) {
-				System.out.println("Ciudad llamado Luanda");
+				System.out.println("Ciudades");
 				while (rs.next()) {
 					System.out.println(rs.getString("c.name"));
 				}
