@@ -43,7 +43,15 @@ public class BD {
 	public static void crearTablaBD() {
 		if(statement == null) return;
 		try{
-			statement.executeUpdate("create table "+ )
+			statement.executeUpdate("create table hotel"+
+			"(ciudad string, pais string, tipo string"+
+			", nombre string, estrellas integer, "+
+			"habitaciones integer)");
+			statement.executeUpdate("create table usuario"+
+			"(nick string, password string, edad integer"+
+			", tipo integer, email string)");
+		}catch(SQLException e){
+			e.printStackTrace();
 		}
 	}
 }
