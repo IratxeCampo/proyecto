@@ -1,10 +1,12 @@
 package proyecto3;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import java.awt.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
+
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.*;
 
@@ -22,9 +24,29 @@ public class VentanaPrincipal extends JFrame {
 		getContentPane().add(bUsuario);
 		getContentPane().add(bValorar);
 		
-		Object[] opciones = {"Sí", "No"};
-		JOptionPane jopciones = new JOptionPane("¿Seguro que quieres salir?", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION, null, opciones);
 		
+		
+		
+		WindowAdapter teclado = new WindowAdapter(){
+			
+		};
+		addWindowListener(new WindowAdapter(){
+			@Override
+			public void windowClosing(WindowEvent e) {
+				
+				int n = JOptionPane.showConfirmDialog(null,"¿Seguro que quieres salir?", "Confirmar salida", JOptionPane.OK_CANCEL_OPTION);
+				if (n==0){
+					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//es un sí
+				}else if(n==1){
+					;//devuelve si es no, si le das a la x es -1
+				}else if(n==-1){
+					JOptionPane.showMessageDialog(null, "De acuerdo\nHasta pronto"
+							, "Mensaje de despedida",
+							JOptionPane.INFORMATION_MESSAGE);
+					
+				};
+			}
+		});
 		
 		//getContentPane().add(panel, BorderLayout.CENTER);
 		
@@ -32,7 +54,7 @@ public class VentanaPrincipal extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaUsuario vent = new VentanaUsuario();
+				Login vent = new Login();
 				vent.setVisible(true);
 				
 			}
@@ -42,7 +64,7 @@ public class VentanaPrincipal extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int n = JOptionPane.showConfirmDialog(jopciones,"¿Seguro que quieres salir?");
+				
 				
 				
 			}
@@ -50,6 +72,7 @@ public class VentanaPrincipal extends JFrame {
 		
 	}
 		public static void main(String[] args) {
+	
 			VentanaPrincipal e = new VentanaPrincipal();
 			e.setVisible(true);
 		}

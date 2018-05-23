@@ -55,6 +55,7 @@ public class VentanaUsuario extends JFrame {
 		});
 	}
 	public static void main(String[] args) {
-		
+		VentanaUsuario u = new VentanaUsuario();
+		u.setVisible(true);
 	}
 }
