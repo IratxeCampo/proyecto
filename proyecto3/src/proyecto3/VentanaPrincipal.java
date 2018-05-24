@@ -18,7 +18,7 @@ public class VentanaPrincipal extends JFrame {
 		setLocationRelativeTo( null );
 		JTextArea n = new JTextArea();
 		JButton bUsuario = new JButton("Introducir usuario");
-		JButton bValorar = new JButton("Valoración de hoteles");
+		JButton bValorar = new JButton("ValoraciÃ³n de hoteles");
 		JPanel panel = new JPanel();
 		getContentPane().setLayout(new GridLayout(2,1));
 		getContentPane().add(bUsuario);
@@ -34,9 +34,9 @@ public class VentanaPrincipal extends JFrame {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				
-				int n = JOptionPane.showConfirmDialog(null,"¿Seguro que quieres salir?", "Confirmar salida", JOptionPane.OK_CANCEL_OPTION);
+				int n = JOptionPane.showConfirmDialog(null,"Seguro que quieres salir?", "Confirmar salida", JOptionPane.OK_CANCEL_OPTION);
 				if (n==0){
-					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//es un sí
+					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//es un sÃ­
 				}else if(n==1){
 					;//devuelve si es no, si le das a la x es -1
 				}else if(n==-1){
