@@ -1,5 +1,3 @@
-package proyecto3;
-
 import java.awt.*;
 import javax.swing.*;
 
