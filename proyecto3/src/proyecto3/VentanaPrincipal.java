@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
+import java.net.URL;
 
 import javax.swing.*;
 
@@ -34,18 +36,21 @@ public class VentanaPrincipal extends JFrame {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				
+				final ImageIcon icon = new ImageIcon(getClass().getResource("adios.gif"));
+		        
 				int n = JOptionPane.showConfirmDialog(null,"¿Seguro que quieres salir?", "Confirmar salida", JOptionPane.OK_CANCEL_OPTION);
 				
 				if (n==-1){
 					JOptionPane.showMessageDialog(null, "De acuerdo\nHasta pronto"
 							, "Mensaje de despedida",
-							JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.INFORMATION_MESSAGE, icon);
 					System.exit(n);
 					//dispose();
 				}else if(n==0){
+					
 					JOptionPane.showMessageDialog(null, "De acuerdo\nHasta pronto"
 							, "Mensaje de despedida",
-							JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.INFORMATION_MESSAGE, icon);
 					System.exit(n);
 				}else{
 					

@@ -29,6 +29,7 @@ public class Login extends JFrame {
 	public Login(){
 		setSize(300,160);
 		setTitle("Login");
+		setLocation(400, 250);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		usuario = new JTextField("" ,19);
 		
@@ -36,6 +37,7 @@ public class Login extends JFrame {
 		listaUsuarios = new JList<>();
 		JButton aceptar = new JButton("Aceptar");
 		JButton cancelar = new JButton("Cancelar");
+		JButton registro = new JButton("Registrarse");
 		JPanel panelSur = new JPanel();
 		JPanel panelContenido = new JPanel();		
 		getContentPane().add(panelContenido, BorderLayout.CENTER);
@@ -52,6 +54,7 @@ public class Login extends JFrame {
 		panelContenido.add(usuario);
 		panelContenido.add(new JLabel("Contrase�a: "));
 		panelContenido.add(contraseña);
+		panelContenido.add(registro);
 		panelContenido.setAlignmentX(CENTER_ALIGNMENT);
 		
 		
@@ -75,6 +78,16 @@ public class Login extends JFrame {
 				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				
 				
+				
+			}
+			
+		});
+		registro.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaUsuario usu = new VentanaUsuario();
+				usu.setVisible(true);
 				
 			}
 			
