@@ -7,13 +7,15 @@ import java.awt.event.ActionListener;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
+import java.net.URL;
 
 import javax.swing.*;
 
 public class VentanaPrincipal extends JFrame {
 	public VentanaPrincipal() {
 		setTitle( "Valortel" );
-		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+		setDefaultCloseOperation( JFrame.DO_NOTHING_ON_CLOSE );
 		setSize( 640, 400 );
 		setLocationRelativeTo( null );
 		JTextArea n = new JTextArea();
@@ -25,8 +27,6 @@ public class VentanaPrincipal extends JFrame {
 		getContentPane().add(bValorar);
 		
 		
-		
-		
 		WindowAdapter teclado = new WindowAdapter(){
 			
 		};
@@ -34,19 +34,30 @@ public class VentanaPrincipal extends JFrame {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				
-				int n = JOptionPane.showConfirmDialog(null,"Seguro que quieres salir?", "Confirmar salida", JOptionPane.OK_CANCEL_OPTION);
-				if (n==0){
-					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//es un sí
-				}else if(n==1){
-					;//devuelve si es no, si le das a la x es -1
-				}else if(n==-1){
+				final ImageIcon icon = new ImageIcon(getClass().getResource("adios.gif"));
+
+				int n = JOptionPane.showConfirmDialog(null,"Seguro que quieres salir?", "Confirmar salida", JOptionPane.OK_CANCEL_OPTION);	
+				
+				if (n==-1){
+
 					JOptionPane.showMessageDialog(null, "De acuerdo\nHasta pronto"
 							, "Mensaje de despedida",
-							JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.INFORMATION_MESSAGE, icon);
+					System.exit(n);
+					//dispose();
+				}else if(n==0){
+			
+					JOptionPane.showMessageDialog(null, "De acuerdo\nHasta pronto"
+							, "Mensaje de despedida",
+							JOptionPane.INFORMATION_MESSAGE, icon);
+					System.exit(n);
+				}else{
 					
-				};
-			}
+				}
+				
+			};
 		});
+	
 		
 		//getContentPane().add(panel, BorderLayout.CENTER);
 		
@@ -64,7 +75,8 @@ public class VentanaPrincipal extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				VentanaValoraciones vv = new VentanaValoraciones();
+				vv.setVisible(true);
 				
 				
 			}

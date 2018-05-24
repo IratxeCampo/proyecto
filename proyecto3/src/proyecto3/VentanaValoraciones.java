@@ -1,7 +1,8 @@
+package proyecto3;
+
 import java.awt.*;
 import javax.swing.*;
 
-import array.ArrayList;
 
 import java.awt.event.*;
 import java.util.Arrays;

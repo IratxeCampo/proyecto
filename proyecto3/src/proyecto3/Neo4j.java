@@ -4,6 +4,7 @@ import java.sql.*;
 
 public class Neo4j {
 
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Class.forName("org.neo4j.jdbc.Driver");
@@ -20,6 +21,11 @@ public class Neo4j {
 					System.out.println(rs.getString("c.name"));
 				}
 			}
+			
+	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}
