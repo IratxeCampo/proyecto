@@ -13,12 +13,12 @@ import javax.swing.*;
 public class VentanaPrincipal extends JFrame {
 	public VentanaPrincipal() {
 		setTitle( "Valortel" );
-		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+		setDefaultCloseOperation( JFrame.DO_NOTHING_ON_CLOSE );
 		setSize( 640, 400 );
 		setLocationRelativeTo( null );
 		JTextArea n = new JTextArea();
 		JButton bUsuario = new JButton("Introducir usuario");
-		JButton bValorar = new JButton("Valoración de hoteles");
+		JButton bValorar = new JButton("ValoraciÃ³n de hoteles");
 		JPanel panel = new JPanel();
 		getContentPane().setLayout(new GridLayout(2,1));
 		getContentPane().add(bUsuario);
@@ -34,19 +34,21 @@ public class VentanaPrincipal extends JFrame {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				
-				int n = JOptionPane.showConfirmDialog(null,"¿Seguro que quieres salir?", "Confirmar salida", JOptionPane.OK_CANCEL_OPTION);
+				int n = JOptionPane.showConfirmDialog(null,"Â¿Seguro que quieres salir?", "Confirmar salida", JOptionPane.OK_CANCEL_OPTION);
 				
 				if (n==-1){
 					JOptionPane.showMessageDialog(null, "De acuerdo\nHasta pronto"
 							, "Mensaje de despedida",
 							JOptionPane.INFORMATION_MESSAGE);
+					System.exit(n);
+					//dispose();
 				}else if(n==0){
 					JOptionPane.showMessageDialog(null, "De acuerdo\nHasta pronto"
 							, "Mensaje de despedida",
 							JOptionPane.INFORMATION_MESSAGE);
-
-				}else{
 					System.exit(n);
+				}else{
+					
 				}
 					
 					

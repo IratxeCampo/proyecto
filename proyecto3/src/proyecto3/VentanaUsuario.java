@@ -17,12 +17,12 @@ public class VentanaUsuario extends JFrame {
 		setSize( 640, 400 );
 		setLocationRelativeTo( null );
 		JTextField tUsuario = new JTextField("Introducir nick");
-		JTextField tContraseña = new JTextField("Introducir contraseña");
+		JTextField tContraseÃ±a = new JTextField("Introducir contraseï¿½a");
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.CENTER);
 		
 		panel.add(tUsuario, BorderLayout.CENTER);
-		panel.add(tContraseña, BorderLayout.CENTER);
+		panel.add(tContraseÃ±a, BorderLayout.CENTER);
 		tUsuario.addFocusListener(new FocusListener() {
 			
 			@Override
@@ -38,18 +38,18 @@ public class VentanaUsuario extends JFrame {
 				
 			}
 		});
-		tContraseña.addFocusListener(new FocusListener() {
+		tContraseÃ±a.addFocusListener(new FocusListener() {
 			
 			@Override
 			public void focusLost(FocusEvent arg0) {
-				if (tContraseña.getText().equals("")){
-				tContraseña.setText("Introducir contraseña");
+				if (tContraseÃ±a.getText().equals("")){
+				tContraseÃ±a.setText("Introducir contraseï¿½a");
 				}				
 			}
 			
 			@Override
 			public void focusGained(FocusEvent arg0) {
-				tContraseña.setText("");
+				tContraseÃ±a.setText("");
 				
 			}
 		});

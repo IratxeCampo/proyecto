@@ -15,7 +15,7 @@ import javax.swing.*;
 public class Login extends JFrame {
 	
 	private JTextField usuario;
-	private JPasswordField contraseña;
+	private JPasswordField contraseÃ±a;
 	private JList listaUsuarios;
 	
 	private void posicionaLinea(Container p, String etiqueta, Component campo){
@@ -27,18 +27,17 @@ public class Login extends JFrame {
 	}
 	
 	public Login(){
-		setSize(300,170);
+		setSize(300,160);
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		usuario = new JTextField("" ,30);
+		usuario = new JTextField("" ,19);
 		
-		contraseña = new JPasswordField("", 15);
+		contraseÃ±a = new JPasswordField("", 15);
 		listaUsuarios = new JList<>();
 		JButton aceptar = new JButton("Aceptar");
 		JButton cancelar = new JButton("Cancelar");
 		JPanel panelSur = new JPanel();
-		JPanel panelContenido = new JPanel();
-		
+		JPanel panelContenido = new JPanel();		
 		getContentPane().add(panelContenido, BorderLayout.CENTER);
 		getContentPane().add(panelSur, BorderLayout.SOUTH);
 		panelSur.setLayout( new GridLayout(1,2));
@@ -47,12 +46,13 @@ public class Login extends JFrame {
 		
 //		panelContenido.setLayout();
 //		posicionaLinea(panelContenido, "Nick: ", usuario);
-//		posicionaLinea(panelContenido, "Password: ", contraseña );
+//		posicionaLinea(panelContenido, "Password: ", contraseï¿½a );
 		
 		panelContenido.add(new JLabel("Nick: "));
 		panelContenido.add(usuario);
-		panelContenido.add(new JLabel("Contraseña: "));
-		panelContenido.add(contraseña);
+		panelContenido.add(new JLabel("Contraseï¿½a: "));
+		panelContenido.add(contraseÃ±a);
+		panelContenido.setAlignmentX(CENTER_ALIGNMENT);
 		
 		
 		JTextField textUsuario =  new JTextField();
@@ -71,6 +71,7 @@ public class Login extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
 				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				
 				
