@@ -27,10 +27,10 @@ public class Login extends JFrame {
 	}
 	
 	public Login(){
-		setSize(650,400);
+		setSize(300,170);
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		usuario = new JTextField("" ,15);
+		usuario = new JTextField("" ,30);
 		
 		contraseña = new JPasswordField("", 15);
 		listaUsuarios = new JList<>();
@@ -72,6 +72,7 @@ public class Login extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				
 				
 				
 			}

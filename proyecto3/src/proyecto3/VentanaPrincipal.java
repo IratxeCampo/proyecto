@@ -35,17 +35,23 @@ public class VentanaPrincipal extends JFrame {
 			public void windowClosing(WindowEvent e) {
 				
 				int n = JOptionPane.showConfirmDialog(null,"¿Seguro que quieres salir?", "Confirmar salida", JOptionPane.OK_CANCEL_OPTION);
-				if (n==0){
-					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//es un sí
-				}else if(n==1){
-					;//devuelve si es no, si le das a la x es -1
-				}else if(n==-1){
+				
+				if (n==-1){
 					JOptionPane.showMessageDialog(null, "De acuerdo\nHasta pronto"
 							, "Mensaje de despedida",
 							JOptionPane.INFORMATION_MESSAGE);
+				}else if(n==0){
+					JOptionPane.showMessageDialog(null, "De acuerdo\nHasta pronto"
+							, "Mensaje de despedida",
+							JOptionPane.INFORMATION_MESSAGE);
+
+				}else{
+					System.exit(n);
+				}
+					
 					
 				};
-			}
+			
 		});
 		
 		//getContentPane().add(panel, BorderLayout.CENTER);
