@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="proyecto3/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="/Users/irati98o/Desktop/json-simple-1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/irati98o/Desktop/Neo4j-JDBC_Example-2/lib/neo4j-jdbc-driver-3.0.jar" sourcepath="/Prog3/JAR"/>
+	<classpathentry kind="lib" path="/Users/irati98o/Downloads/gson-2.2.2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

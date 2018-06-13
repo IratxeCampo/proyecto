@@ -13,8 +13,8 @@ public class VentanaValoraciones extends JFrame{
 	public VentanaValoraciones(){
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setSize(1000, 1000);
-		setTitle("Ventana de valoraciones");
 		setLocationRelativeTo(null);
+		JLabel lhotel = new JLabel("Selecciona un hotel");
 		String hoteles[] = {"Hilton", "HolidayInn", "Four Seasons" };
 		JComboBox<String> cbHoteles = new JComboBox<String>(hoteles);
 		cbHoteles.setEditable(false);
@@ -48,7 +48,12 @@ public class VentanaValoraciones extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				taOpiniones.setText("Valoraciones: ");
-				taOpiniones.append("\n" + lOpiniones);
+				if(cbHoteles.getSelectedItem().equals("Hilton")){
+					taOpiniones.append("\n" + mOpiniones.getElementAt(0));
+				} else if(cbHoteles.getSelectedItem().equals("HolidayInn")) {
+					taOpiniones.append("\n" + mOpiniones.getElementAt(1));
+				}
+					
 			}
 		});
 	}

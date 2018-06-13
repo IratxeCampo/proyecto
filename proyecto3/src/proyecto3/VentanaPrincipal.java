@@ -42,7 +42,7 @@ public class VentanaPrincipal extends JFrame {
 
 					JOptionPane.showMessageDialog(null, "De acuerdo\nHasta pronto"
 							, "Mensaje de despedida",
-							JOptionPane.INFORMATION_MESSAGE, icon);
+							JOptionPane.QUESTION_MESSAGE, icon);
 					System.exit(n);
 					//dispose();
 				}else if(n==0){
