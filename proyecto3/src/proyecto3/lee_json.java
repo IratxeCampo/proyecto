@@ -23,7 +23,7 @@ public class lee_json {
 		
 		JsonParser parser = new JsonParser();
 	
-		FileReader fr = new FileReader("/Users/irati98o/Desktop/Usuarios.json");
+		FileReader fr = new FileReader("proyecto3/src/proyecto3/Usuarios.json");
 		
 		JsonElement datos = parser.parse(fr);
 		
