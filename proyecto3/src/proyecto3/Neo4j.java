@@ -4,7 +4,7 @@ import java.sql.*;
 import org.neo4j.driver.v1.GraphDatabase;
 public class Neo4j {
 
-	public static void main(String[] args) {
+	public Neo4j() {
 		
 		try{
 			
