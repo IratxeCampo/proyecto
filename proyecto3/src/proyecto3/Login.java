@@ -65,7 +65,14 @@ public class Login extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				/*
+				if(comprobarUsuario(usuario.getText(), contraseña.getPassword())){
+					System.out.println("contraseña correcta"); 
+				} else {
+					JLabel mensaje = new JLabel("Contraseña o usuario incorrecta!");
+					panelContenido.add(mensaje);
+				}
+				*/
 				
 			}
 			
@@ -94,10 +101,15 @@ public class Login extends JFrame {
 		});
 		
 	}
+	
+	/*
+	public boolean comprobarUsuario(String usu, String con){
+		if(usu.equals(lee_json.dumpJSONElement()))
+	}
 	public void cargaUsuario(){
 		
 	}
-
+*/
 	public static void main(String[] args) {
 		Login v = new Login();
 		v.setVisible(true);
