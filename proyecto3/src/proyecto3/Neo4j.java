@@ -1,7 +1,6 @@
 package proyecto3;
 
 import java.sql.*;
-import org.neo4j.driver.internal.connector.socket.*;
 import org.neo4j.driver.v1.GraphDatabase;
 public class Neo4j {
 
