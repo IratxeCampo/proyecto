@@ -4,6 +4,8 @@ import org.bson.Document;
 import com.mongodb.*;
 import com.mongodb.client.MongoDatabase;
 
+import static java.util.Arrays.asList;
+
 public class MongoDB {
 	public void conexion() {
 		MongoClient mongoClient = new MongoClient("localhost");
@@ -15,7 +17,17 @@ public class MongoDB {
 					.append("password", "Mikel")
 					.append("edad", "37")
 					.append("tipo", "nivel 1")
-					.append("email", "mikel05@yahoo.es"));
+					.append("email", "mikel05@yahoo.es")
+					.append("opiniones", asList(
+						new Document()
+							.append("nombreHotel", "Accra")
+							.append("TituloOpinion", "Satisfecho")
+							.append("opinion", "Un hotel de lujo en el centro de Accra que, además de la comodidad "
+									+ "y limpieza de las habitaciones y la calidad del descanso, cuenta con un buen "
+									+ "buffet que mezcla platos europeos con sabores locales; la repostería es muy "
+									+ "destacable. Como curiosidad,el hotel muestra en sus pasillos y paredes esculturas "
+									+ "y pinturas de autores locales muy sobresalientes."))
+					));
 		db.getCollection("usuarios").insertOne( 
 				new Document()
 				.append("nick", "Jon")
