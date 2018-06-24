@@ -21,6 +21,7 @@ public class VentanaUsuario extends JFrame {
 		setLocationRelativeTo( null );
 		JTextField tUsuario = new JTextField("Introducir nick");
 		JTextField tContrasena = new JTextField("Introducir contrasenya");
+		JTextField trContrasena = new JTextField("Repetir contrasenya");
 		JTextField tEmail = new JTextField("Introducir email");
 		JTextField tEdad = new JTextField("Introducir edad");
 		JButton bGuardar = new JButton("Guardar");
@@ -33,11 +34,14 @@ public class VentanaUsuario extends JFrame {
 		panel.add(tUsuario, BorderLayout.CENTER);
 		panel.add(new JLabel(" Contrasenya: "));
 		panel.add(tContrasena, BorderLayout.CENTER);
+
+		panel.add(new JLabel(" Repetir contrasenya: "));
+		panel.add(trContrasena, BorderLayout.CENTER);
 		panel.add(new JLabel(" Email: "));
 		panel.add(tEmail, BorderLayout.SOUTH);
 		panel.add(new JLabel(" Edad: "));
 		panel.add(tEdad, BorderLayout.SOUTH);
-		panel.setLayout(new GridLayout(4,  2));
+		panel.setLayout(new GridLayout(5,2));
 		panel2.setLayout(new GridLayout(1,2));
 		panel2.add(bGuardar);
 		panel2.add(bCancelar);
@@ -65,7 +69,7 @@ public class VentanaUsuario extends JFrame {
 			public void focusLost(FocusEvent arg0) {
 
 				if (tContrasena.getText().equals("")){
-				tContrasena.setText("Introducir contrasena");
+				tContrasena.setText("Introducir contrasenya");
 
 				}				
 			}
@@ -78,6 +82,27 @@ public class VentanaUsuario extends JFrame {
 				
 			}
 		});
+		trContrasena.addFocusListener(new FocusListener() {
+
+			
+			@Override
+			public void focusLost(FocusEvent arg0) {
+
+				if (trContrasena.getText().equals("")){
+				trContrasena.setText("Repetir contrasenya");
+
+				}				
+			}
+			
+			@Override
+			public void focusGained(FocusEvent arg0) {
+
+				trContrasena.setText("");
+
+				
+			}
+		});
+		
 		tEmail.addFocusListener(new FocusListener() {
 			
 			@Override
