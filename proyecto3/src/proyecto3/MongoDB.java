@@ -10,6 +10,23 @@ import static java.util.Arrays.asList;
 import java.rmi.UnknownHostException;
 
 public class MongoDB {
+	private MongoClient mongoClient;
+	MongoDatabase db;
+	
+	public MongoDB(){
+		this.mongoClient = new MongoClient("localhost");
+		this.db = mongoClient.getDatabase("aplicacion");
+	}
+	
+	public void insertUser(String usuario, String pass, String email, String edad){
+		db.getCollection("usuarios").insertOne( 
+				new Document()
+				.append("nick", usuario)
+				.append("password",pass)
+				.append("edad", edad)
+				.append("email", email));
+	}
+	
 	public void conexion() {
 		MongoClient mongoClient = new MongoClient("localhost");
 		MongoDatabase db = mongoClient.getDatabase("aplicacion");
@@ -241,6 +258,8 @@ public class MongoDB {
 		
 	}
 	
+	
+	
 	public void reiniciarMongo(){
 		MongoClient mongoClient = new MongoClient("localhost");
 		MongoDatabase db = mongoClient.getDatabase("aplicacion");
@@ -299,9 +318,10 @@ public class MongoDB {
 		
 	}
 	
+	
+	
 	public static void main(String[] args) throws UnknownHostException {
 		MongoClient mongoClient = new MongoClient();
-	    MongoDatabase db = mongoClient.getDatabase("aplicacion");
 	   MongoDB mongo = new MongoDB();
 	   mongo.reiniciarMongo();
 	   mongo.conexion();

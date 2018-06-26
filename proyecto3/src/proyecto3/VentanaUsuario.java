@@ -25,6 +25,20 @@ public class VentanaUsuario extends JFrame {
 		JTextField tEmail = new JTextField("Introducir email");
 		JTextField tEdad = new JTextField("Introducir edad");
 		JButton bGuardar = new JButton("Guardar");
+		bGuardar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String nick = tUsuario.getText();
+				String contrasenya = tContrasena.getText();
+				String edad = tEdad.getText();
+				String email = tEmail.getText();
+				MongoDB mongo = new MongoDB();
+				mongo.insertUser(nick, contrasenya, email, edad);
+				
+				
+			}
+		});
 		JButton bCancelar = new JButton("Cancelar");
 		JPanel panel2 = new JPanel();
 		JPanel panel = new JPanel();
