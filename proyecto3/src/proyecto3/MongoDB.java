@@ -4,8 +4,6 @@ import org.bson.Document;
 import com.mongodb.*;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.Block;
-
 
 import static java.util.Arrays.asList;
 
@@ -234,25 +232,93 @@ public class MongoDB {
 							.append("nombreHotel", "")
 							.append("tituloOpinion", "")
 							.append("opinion", "Mi estancia en el hotel es positiva, muy céntrico, el personal del h"
-									+ "otel muy agradable y muy predispuesto a ayudar. 100% recomendable."))));
+									+ "otel muy agradable y muy predispuesto a ayudar. 100% recomendable."),
+						new Document()
+							.append("nombreHotel", "")
+							.append("tituloOpinion", "")
+							.append("opinion", "Maravilloso, sublime, espectacular."))));
 		mongoClient.close();
 		
+	}
+	
+	public void reiniciarMongo(){
+		MongoClient mongoClient = new MongoClient("localhost");
+		MongoDatabase db = mongoClient.getDatabase("aplicacion");
+		db.drop();
+	}
+	
+	public void query1(){
 		
+			MongoClient mongoClient = new MongoClient();
+			MongoDatabase db = mongoClient.getDatabase("aplicacion");
+			
+			FindIterable<Document> iterable = db.getCollection("usuarios").find(
+			        new Document("nick", "Maite"));
+			iterable.forEach(new Block<Document>() {
+			    @Override
+			    public void apply(final Document document) {
+			        System.out.println(document.get("password"));
+			    }
+			});
+			
+			mongoClient.close();
 		
 	}
+	public void query2(){
+		
+		MongoClient mongoClient = new MongoClient();
+		MongoDatabase db = mongoClient.getDatabase("aplicacion");
+		
+		FindIterable<Document> iterable = db.getCollection("usuarios").find(
+		        new Document("nick", "Jon"));
+		iterable.forEach(new Block<Document>() {
+		    @Override
+		    public void apply(final Document document) {
+		        System.out.println(document.get("edad"));
+		    }
+		});
+		
+		mongoClient.close();
+	
+	}
+	public void query3(){
+			
+			MongoClient mongoClient = new MongoClient();
+			MongoDatabase db = mongoClient.getDatabase("aplicacion");
+			
+			FindIterable<Document> iterable = db.getCollection("usuarios").find(
+			        new Document("nick", "Garazi"));
+			iterable.forEach(new Block<Document>() {
+			    @Override
+			    public void apply(final Document document) {
+			        System.out.println(document.get("opinion")+"\n");
+			    }
+			});
+			
+			mongoClient.close();
+		
+	}
+	
 	public static void main(String[] args) throws UnknownHostException {
 		MongoClient mongoClient = new MongoClient();
 	    MongoDatabase db = mongoClient.getDatabase("aplicacion");
-	    
-	    FindIterable<Document> iterable = db.getCollection("usuarios").find(
-	    		new Document("nick", "Mikel").append("nombreHotel", "Reefs"));
-	    iterable.forEach(new Block<Document>() {
-		    @Override
-		    public void apply(final Document document) {
-		        System.out.println(document.get("nick"));
-		    }
-		});
-	    
+	   MongoDB mongo = new MongoDB();
+	   mongo.reiniciarMongo();
+	   mongo.conexion();
+	   
+	   mongo.query1();
+	   mongo.query2();
+	   mongo.query3();
+	 
+//	    FindIterable<Document> iterable = db.getCollection("usuarios").find(
+//	    		new Document("nick", "Mikel").append("nombreHotel", "Reefs"));
+//	    iterable.forEach(new Block<Document>() {
+//		    @Override
+//		    public void apply(final Document document) {
+//		        System.out.println(document.get("nick"));
+//		    }
+//		});
+	   
 	    mongoClient.close();
 	}
 }
