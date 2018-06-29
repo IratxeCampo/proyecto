@@ -10,6 +10,7 @@ import java.awt.event.FocusListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -31,10 +32,15 @@ public class VentanaUsuario extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				String nick = tUsuario.getText();
 				String contrasenya = tContrasena.getText();
+				String trContrasenya = trContrasena.getText();
 				String edad = tEdad.getText();
 				String email = tEmail.getText();
+				System.out.println(nick+contrasenya+trContrasenya+edad+email);
 				MongoDB mongo = new MongoDB();
 				mongo.insertUser(nick, contrasenya, email, edad);
+				
+			
+			
 				
 				
 			}
@@ -146,6 +152,19 @@ public class VentanaUsuario extends JFrame {
 				
 			}
 		});
+//		bGuardar.addActionListener(new ActionListener() {
+//			
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				if(tContrasena.getText()!=trContrasena.getText()){
+//					JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
+//					System.out.println(tContrasena.getText()+" "+trContrasena.getText());
+//				}else if(tContrasena.getText()==trContrasena.getText()){
+//					
+//				}
+//				
+//			}
+//		});
 		bCancelar.addActionListener(new ActionListener(){
 
 			@Override
@@ -156,6 +175,8 @@ public class VentanaUsuario extends JFrame {
 			
 		});
 	}
+	
+	
 public static void main(String[] args) {
 	VentanaUsuario u = new VentanaUsuario();
 	u.setVisible(true);
