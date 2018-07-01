@@ -7,5 +7,6 @@
 	<classpathentry kind="lib" path="C:/Users/Acer/Desktop/diapos/json-20180130.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Acer/Desktop/diapos/gson-2.8.5.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Acer/Desktop/diapos/mongo-java-driver-3.3.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Acer/Desktop/diapos/neo4j-jdbc-driver-3.1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

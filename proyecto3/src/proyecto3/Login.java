@@ -11,6 +11,13 @@ import java.time.Year;
 
 import javax.swing.*;
 
+import org.bson.Document;
+
+import com.mongodb.Block;
+import com.mongodb.MongoClient;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoDatabase;
+
 
 public class Login extends JFrame {
 	
@@ -66,10 +73,10 @@ public class Login extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				if(comprobarUsuario(usuario.getText(), contraseña.getPassword().toString())){
-					System.out.println("contraseña correcta"); 
+				if(comprobarUsu(usuario.getText())&&comprobarContr(new String(contraseña.getPassword().toString()))){
+					System.out.println("Datos correctos"); 
 				} else {
-					JLabel mensaje = new JLabel("Contraseña o usuario incorrecta!");
+					JLabel mensaje = new JLabel("¡Contraseña o usuario incorrecta!");
 					panelContenido.add(mensaje);
 				}
 				
@@ -101,11 +108,57 @@ public class Login extends JFrame {
 		});
 		
 	}
-	
-	
-	public boolean comprobarUsuario(String usu, String con){
-		if(usu.equals());
+	public boolean comprobarContr(String contr){
+		boolean isContraTrue=false;
+		MongoDB base = new MongoDB();
+		base.reiniciarMongo();
+		base.conexion();
+		MongoClient mongoClient = new MongoClient();
+		MongoDatabase db = mongoClient.getDatabase("aplicacion");
+		
+		FindIterable<Document> iterableContra = db.getCollection("usuarios").find(
+		        new Document("password", contr));
+		iterableContra.forEach(new Block<Document>() {
+		    @Override
+		    public void apply(final Document document) {
+		    	document.containsKey(iterableContra);
+		        System.out.println(document.get("password"));
+		    }
+		});return isContraTrue;
+		
 	}
+	public boolean comprobarUsu(String usuario){
+		boolean isUsuarioTrue=false;
+		MongoDB base = new MongoDB();
+		base.reiniciarMongo();
+		base.conexion();
+		MongoClient mongoClient = new MongoClient();
+		MongoDatabase db = mongoClient.getDatabase("aplicacion");
+		
+		FindIterable<Document> iterableUsu = db.getCollection("usuarios").find(
+		        new Document("nick", usuario));
+		iterableUsu.forEach(new Block<Document>() {
+		    @Override
+		    public void apply(final Document document) {
+		    	document.containsKey(iterableUsu);
+		        System.out.println(document.get("password"));
+		    }
+		});
+		mongoClient.close();
+		
+		
+		if(usuario.length()==3){
+			if(usuario.equals(3)){
+				
+				return isUsuarioTrue=true;
+			}
+		}else{
+			
+			return isUsuarioTrue=false;
+		}return isUsuarioTrue;
+	}
+	
+	
 	public void cargaUsuario(){
 		
 	}

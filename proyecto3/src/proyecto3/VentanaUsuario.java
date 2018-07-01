@@ -7,6 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.text.FieldPosition;
 import java.text.Format;
 import java.text.ParsePosition;
@@ -24,7 +27,7 @@ import javax.swing.JTextField;
 public class VentanaUsuario extends JFrame {
 
 	private static final long serialVersionUID = 8296910194879088164L;
-
+	
 	public VentanaUsuario() {
 		
 		setTitle( "Valortel" );
@@ -89,32 +92,60 @@ public class VentanaUsuario extends JFrame {
 		panel2.add(bGuardar);
 		panel2.add(bCancelar);
 
+		tEdad.addKeyListener(new KeyAdapter() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				textCodKeyTyped(e);
+				
+			}
+			
+		});
 		
 		bGuardar.addActionListener(new ActionListener() {
+			
+			
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				String nick = tUsuario.getText();
-				String contrasenya = tContrasena.getPassword().toString();
-				String trContrasenya = trContrasena.getPassword().toString();
+				String contrasenya = new String(tContrasena.getPassword());
+				String trContrasenya = new String(trContrasena.getPassword());
 				String edad = tEdad.getText();
 				String email = tEmail.getText();
-				System.out.println(nick + " " + contrasenya + " " + trContrasenya + " " + edad + " " + email);
-				
-				if(tContrasena.getPassword() != trContrasena.getPassword()){
-					JOptionPane.showMessageDialog(null, "Las contraseynas no coinciden");
-					tContrasena.setText("");
-					trContrasena.setText("");
-					System.out.println(tContrasena.getPassword().toString() + " " + trContrasena.getPassword().toString());
-				}else {
-					MongoDB mongo = new MongoDB();
-					mongo.insertUser(nick, contrasenya, email, edad);
-				}
 				
 				if(!email.contains("@")){
 					JOptionPane.showMessageDialog(null, "Email no valido");
 					tEmail.setText("");
 				}
+				
+				if(comprobarContr(contrasenya, trContrasenya)==true){
+					JOptionPane.showMessageDialog(null, "Los datos introducidos son correctos\nUsuario registrado correctamente");
+					MongoDB mongo = new MongoDB();
+					mongo.insertUser(nick, contrasenya, email, edad);
+					
+					}else{
+						JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden\nVuelve a intentarlo");
+						tContrasena.setText("");
+						trContrasena.setText("");
+								
+				}
+				System.out.println(nick + " " + contrasenya + " " + trContrasenya + " " + email + " " + edad);
+			
+			
+				
+//				if(contrasenya != trContrasenya){
+//					JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
+//					tContrasena.setText("");
+//					trContrasena.setText("");
+//					
+//					System.out.println(contrasenya + " " + trContrasenya);
+//				}else {
+//					MongoDB mongo = new MongoDB();
+//					mongo.insertUser(nick, contrasenya, email, edad);
+//				}
+				
+				
 				
 			}
 		});
@@ -129,7 +160,22 @@ public class VentanaUsuario extends JFrame {
 			
 		});
 	}
-	
+	private void textCodKeyTyped(KeyEvent key) {
+		char c = key.getKeyChar();
+		if(c<'0' || c>'9') key.consume();
+	}
+	public boolean comprobarContr(String contr, String trContr){
+		boolean isContrasenyaTrue=false;
+		if(contr.length()==trContr.length()){
+			if(contr.equals(trContr)){
+				
+				return isContrasenyaTrue=true;
+			}
+		}else{
+			
+			return isContrasenyaTrue=false;
+		}return isContrasenyaTrue;
+	}
 	
 	public static void main(String[] args) {
 		VentanaUsuario u = new VentanaUsuario();
