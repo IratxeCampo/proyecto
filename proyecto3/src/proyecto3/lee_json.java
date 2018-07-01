@@ -27,10 +27,10 @@ public class lee_json {
 		
 		JsonElement datos = parser.parse(fr);
 		
-		dumpJSONElement(datos);
+		leerElementos(datos);
 	}
 	
-	public static void dumpJSONElement(JsonElement elemento){
+	public static void leerElementos(JsonElement elemento){
 		if(elemento.isJsonObject()){
 			System.out.println("es objeto");
 			JsonObject obj = elemento.getAsJsonObject();
@@ -39,8 +39,8 @@ public class lee_json {
 			while(iter.hasNext()){
 				Entry<String, JsonElement> entrada = iter.next();
 				System.out.println("Clave: " + entrada.getKey());
-				System.out.println("Valor: ");
-				dumpJSONElement(entrada.getValue());
+				System.out.println("Valor: " + entrada.getValue());
+				leerElementos(entrada.getValue());
 			}
 		} else if (elemento.isJsonArray()){
 			JsonArray array = elemento.getAsJsonArray();
@@ -48,7 +48,7 @@ public class lee_json {
 			Iterator<JsonElement> iter = array.iterator();
 			while(iter.hasNext()){
 				JsonElement entrada = iter.next();
-				dumpJSONElement(entrada);
+				leerElementos(entrada);
 			}
 		} else if (elemento.isJsonPrimitive()){
 			System.out.println("Es primitiva");

@@ -11,13 +11,6 @@ import java.time.Year;
 
 import javax.swing.*;
 
-import org.bson.Document;
-
-import com.mongodb.Block;
-import com.mongodb.MongoClient;
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoDatabase;
-
 
 public class Login extends JFrame {
 	
@@ -38,7 +31,8 @@ public class Login extends JFrame {
 		setTitle("Login");
 		setLocation(400, 250);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		usuario = new JTextField("" ,19);	
+		usuario = new JTextField("" ,19);
+		
 		contraseña = new JPasswordField("", 15);
 		listaUsuarios = new JList<>();
 		JButton aceptar = new JButton("Aceptar");
@@ -58,7 +52,7 @@ public class Login extends JFrame {
 		
 		panelContenido.add(new JLabel("Nick: "));
 		panelContenido.add(usuario);
-		panelContenido.add(new JLabel("Contraseña: "));
+		panelContenido.add(new JLabel("Contrase�a: "));
 		panelContenido.add(contraseña);
 		panelContenido.add(registro);
 		panelContenido.setAlignmentX(CENTER_ALIGNMENT);
@@ -71,33 +65,15 @@ public class Login extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String tUsuario =usuario.getText();
-				char[] tContrasenya = contraseña.getPassword();
-				MongoClient mongoClient = new MongoClient();
-				MongoDatabase db = mongoClient.getDatabase("aplicacion");
-				MongoDB mongo = new MongoDB();
-				mongo.conexion();
-				Document myDoc = db.getCollection("usuarios").find().first();
-				myDoc = db.getCollection("usuarios").find().first();
-				myDoc.containsValue(tUsuario);
-			//	mongo.query1();
 				
-				FindIterable<Document> iterableUsu = db.getCollection("usuarios").find(new Document("nick", tUsuario));
+				if(comprobarUsuario(usuario.getText(), contraseña.getPassword().toString())){
+					System.out.println("contraseña correcta"); 
+				} else {
+					JLabel mensaje = new JLabel("Contraseña o usuario incorrecta!");
+					panelContenido.add(mensaje);
+				}
 				
-				for (Document document : iterableUsu) {
-					document.get("nick");
-				}
-				FindIterable<Document> iterableContr = db.getCollection("usuarios").find(new Document("password", tContrasenya));
-				if(iterableUsu.equals(tUsuario)){
-					if(iterableContr.equals(tContrasenya)){
-					JOptionPane.showMessageDialog(null, "Se ha iniciado sesión/nHola "+tUsuario);
-					}
-				}else if(!iterableUsu.equals(textUsuario)){
-					JOptionPane.showMessageDialog(null, "No existe este usuario: "+tUsuario+"\nCrea una cuenta");
-				}else if(!iterableContr.equals(tContrasenya)){
-					JOptionPane.showMessageDialog(null, "Contraseña incorrecta: "+tContrasenya+"\nVuelve a intentarlo");
-				}
-					mongoClient.close();
+				
 			}
 			
 		});
@@ -105,7 +81,11 @@ public class Login extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				setVisible(false);
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				
+				
+				
 			}
 			
 		});
@@ -120,6 +100,11 @@ public class Login extends JFrame {
 			
 		});
 		
+	}
+	
+	
+	public boolean comprobarUsuario(String usu, String con){
+		if(usu.equals());
 	}
 	public void cargaUsuario(){
 		
