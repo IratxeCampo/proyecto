@@ -134,17 +134,6 @@ public class VentanaUsuario extends JFrame {
 			
 			
 				
-//				if(contrasenya != trContrasenya){
-//					JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
-//					tContrasena.setText("");
-//					trContrasena.setText("");
-//					
-//					System.out.println(contrasenya + " " + trContrasenya);
-//				}else {
-//					MongoDB mongo = new MongoDB();
-//					mongo.insertUser(nick, contrasenya, email, edad);
-//				}
-				
 				
 				
 			}
@@ -164,6 +153,7 @@ public class VentanaUsuario extends JFrame {
 		char c = key.getKeyChar();
 		if(c<'0' || c>'9') key.consume();
 	}
+	
 	public boolean comprobarContr(String contr, String trContr){
 		boolean isContrasenyaTrue=false;
 		if(contr.length()==trContr.length()){

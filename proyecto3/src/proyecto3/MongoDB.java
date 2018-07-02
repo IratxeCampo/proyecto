@@ -3,19 +3,24 @@ import org.bson.Document;
 
 import com.mongodb.*;
 import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 import static java.util.Arrays.asList;
 
 import java.rmi.UnknownHostException;
 
+import javax.swing.JOptionPane;
+
 public class MongoDB {
 	private MongoClient mongoClient;
 	MongoDatabase db;
+	MongoCollection collection;
 	
 	public MongoDB(){
 		this.mongoClient = new MongoClient("localhost");
 		this.db = mongoClient.getDatabase("aplicacion");
+		this.collection = db.getCollection("usuarios");
 	}
 	
 	public void insertUser(String usuario, String pass, String email, String edad){
@@ -26,6 +31,20 @@ public class MongoDB {
 				.append("edad", edad)
 				.append("email", email));
 	}
+	
+	public void insertOpinion(String nomHotel, String tituloOpinion, String opinion){
+		
+		db.getCollection("usuarios").insertOne( 
+				new Document()
+				.append("opiniones", asList(
+						new Document()
+						.append("nombreHotel", nomHotel)
+						.append("tituloOpinion", tituloOpinion)
+						.append("opinion", opinion))
+						)
+		);
+	}
+	
 	
 	public void conexion() {
 		MongoClient mongoClient = new MongoClient("localhost");
@@ -266,34 +285,53 @@ public class MongoDB {
 		db.drop();
 	}
 	
-	public void query1(){
-		
-			MongoClient mongoClient = new MongoClient();
-			MongoDatabase db = mongoClient.getDatabase("aplicacion");
+	public void recuperarContraseña(String usu, String contr){
+//			
 			
 			FindIterable<Document> iterable = db.getCollection("usuarios").find(
-			        new Document("nick", "Maite"));
+			        new Document("nick", usu));
+			
 			iterable.forEach(new Block<Document>() {
 			    @Override
 			    public void apply(final Document document) {
-			        System.out.println(document.get("password"));
+			    	if(document.get("password").equals(contr)){
+			    		JOptionPane.showMessageDialog(null, "Datos correctos");
+			    		VentanaOpinion ven = new VentanaOpinion(usu);
+			    		ven.setVisible(true);
+			    		
+			    		
+			    	}else{
+			    		JOptionPane.showMessageDialog(null, "Contraseña incorrecta\nInténtalo de nuevo");
+			    	}
+			       
 			    }
 			});
 			
 			mongoClient.close();
-		
+			
 	}
-	public void query2(){
+	public void existeUsuario(String usu, String contr){
 		
-		MongoClient mongoClient = new MongoClient();
-		MongoDatabase db = mongoClient.getDatabase("aplicacion");
+		reiniciarMongo();
+		conexion();
 		
 		FindIterable<Document> iterable = db.getCollection("usuarios").find(
-		        new Document("nick", "Jon"));
+		        new Document("nick", usu));
+		
 		iterable.forEach(new Block<Document>() {
+			
 		    @Override
 		    public void apply(final Document document) {
-		        System.out.println(document.get("edad"));
+		    	boolean isTrue=false;
+		    	if(document.get("nick").equals(usu)){
+		    		recuperarContraseña(usu, contr);
+		    		isTrue=true;
+		    	}else{
+		    		JOptionPane.showMessageDialog(null, "Usuario inexistente");
+		    		isTrue=false;
+		    	}
+		    	
+//		        System.out.println(document.get("nick"));
 		    }
 		});
 		
@@ -322,14 +360,14 @@ public class MongoDB {
 	
 	public static void main(String[] args) throws UnknownHostException {
 		MongoClient mongoClient = new MongoClient();
-	   MongoDB mongo = new MongoDB();
-	   mongo.reiniciarMongo();
-	   mongo.conexion();
-	   
-	   mongo.query1();
-	   mongo.query2();
-	   mongo.query3();
-	 
+		MongoDB mongo = new MongoDB();
+		mongo.reiniciarMongo();
+		mongo.conexion();
+	
+//	   mongo.query1();
+//	   mongo.query2();
+//	   mongo.query3();
+//	 
 //	    FindIterable<Document> iterable = db.getCollection("usuarios").find(
 //	    		new Document("nick", "Mikel").append("nombreHotel", "Reefs"));
 //	    iterable.forEach(new Block<Document>() {

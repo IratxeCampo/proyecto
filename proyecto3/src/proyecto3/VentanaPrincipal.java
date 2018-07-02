@@ -67,7 +67,7 @@ public class VentanaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Login vent = new Login();
 				vent.setVisible(true);
-				
+				dispose();
 			}
 		});
 		
