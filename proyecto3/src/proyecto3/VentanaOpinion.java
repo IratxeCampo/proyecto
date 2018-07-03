@@ -146,10 +146,13 @@ public class VentanaOpinion extends JFrame {
 		}
 		return isCompleto;
 	}
-	public String recuperarPuntos(int puntos, String nomHotel) {
-		puntos = js.getValue();
-		nomHotel = tHotel.getText();
-		return puntos+", "+nomHotel;
+	public int getPuntos(){
+		int puntos = js.getValue();
+		return puntos;
+	}
+	public String getNombreHotel() {
+		String nomHotel = tHotel.getText();
+		return nomHotel;
 	}	
 	
 	private void textCodKeyTyped(KeyEvent key) {

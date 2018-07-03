@@ -1,11 +1,21 @@
 package proyecto3;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
+import proyecto3.MongoDB;
 
 public class VentanaHotel extends JFrame{
 
@@ -14,22 +24,53 @@ public class VentanaHotel extends JFrame{
 
 	public VentanaHotel() {
 		
-		setSize(1000, 700);
+		setSize(600, 250);
+		setLocation(300, 200);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("Tu ventana de opiniones");
 		
-		ArrayList<String> hoteles = new ArrayList<>();
-		String[] lista;
+		JLabel lNombre = new JLabel("  Introduce el nombre del hotel: ");
+		ArrayList<String> arHoteles = new ArrayList<String>();
+		String[] listaHoteles = VentanaValoraciones.obtenerHoteles(arHoteles);
+		JComboBox<String> cbHoteles = new JComboBox<String>(listaHoteles);
 		
-		JLabel lOpiniones = new JLabel();
+		JPanel panelArriba = new JPanel();
 		
-		lista = VentanaValoraciones.obtenerHoteles(hoteles);
+		panelArriba.setLayout(new GridLayout(1, 2));
 		
-		for(String s : lista){
-			lOpiniones.setText(s);
-			getContentPane().add(lOpiniones, BorderLayout.CENTER);
-			System.out.println(s);
-		}
+		panelArriba.add(lNombre);
+		panelArriba.add(cbHoteles);
+		
+		getContentPane().add(panelArriba, BorderLayout.NORTH);
+		
+		cbHoteles.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(cbHoteles.getSelectedItem().toString().equals("[Skyna Luanda")){
+					Font fuente = new Font("Bradley Hand", Font.BOLD, 13);
+					Font fuente2 = new Font("Cambria", Font.BOLD, 16);
+					JLabel lUsu = new JLabel(" Usuario:  Garazi");
+					lUsu.setFont(fuente2);
+					JLabel lTit = new JLabel("  Opinion: " );
+					lTit.setFont(fuente2);
+					JLabel lOpinion = new JLabel("    Agradable estancia en un hotel bien ubicado y confortable.");
+					lOpinion.setFont(fuente);
+					JLabel lResponder = new JLabel("  Responder:");
+					JTextArea taRespuesta = new JTextArea(2, 10);
+					JPanel pOpiniones = new JPanel();
+					pOpiniones.add(lUsu);
+					pOpiniones.add(lTit);
+					pOpiniones.add(lOpinion);
+					pOpiniones.add(lResponder);
+					pOpiniones.add(taRespuesta);
+					pOpiniones.setLayout(new GridLayout(5, 1));
+					getContentPane().add(pOpiniones, BorderLayout.CENTER);
+				}
+				
+			}
+		});
+		
 		
 	}
 	

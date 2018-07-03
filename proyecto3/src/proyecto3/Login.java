@@ -21,7 +21,7 @@ import com.mongodb.client.MongoDatabase;
 
 public class Login extends JFrame {
 	
-	private JTextField usuario;
+	public JTextField usuario;
 	private JPasswordField contraseña;
 	private JList listaUsuarios;
 	
@@ -73,9 +73,8 @@ public class Login extends JFrame {
 				String usu = usuario.getText();
 				
 				
-					MongoDB mongo = new MongoDB();
-					
-					mongo.existeUsuario(usu, cont);					
+				MongoDB mongo = new MongoDB();
+				mongo.existeUsuario(usu, cont);					
 			}
 			
 		});
@@ -104,7 +103,10 @@ public class Login extends JFrame {
 		});
 		
 	}
-	
+	public String getUsuario(){
+		String tUsuario = usuario.getText();
+		return tUsuario;
+	}
 	
 
 	public static void main(String[] args) {

@@ -29,6 +29,8 @@ public class VentanaPrincipal extends JFrame {
 		getContentPane().add(bUsuario);
 		getContentPane().add(bValorar);
 		
+		VentanaGuardar v = new VentanaGuardar();
+		v.setVisible(true);
 		
 		WindowAdapter teclado = new WindowAdapter(){
 			
@@ -49,10 +51,10 @@ public class VentanaPrincipal extends JFrame {
 					//dispose();
 				}else if(n==0){
 					MongoClient c = new MongoClient();
-					c.close();
 					JOptionPane.showMessageDialog(null, "De acuerdo\nHasta pronto"
 							, "Mensaje de despedida",
 							JOptionPane.INFORMATION_MESSAGE, null);
+					c.close();
 					System.exit(n);
 				}else{
 					

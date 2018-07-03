@@ -8,7 +8,14 @@ import com.mongodb.client.MongoDatabase;
 
 import static java.util.Arrays.asList;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.rmi.UnknownHostException;
+import java.util.ArrayList;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 
@@ -315,6 +322,28 @@ public class MongoDB {
 			
 			
 	}
+	public void recogerInfo(){
+		try{
+		FindIterable<Document> iterable = db.getCollection("usuarios").find();
+		System.out.println(iterable);
+		File file = new File("datos.txt");
+		PrintStream ps = new PrintStream(new FileOutputStream(file));
+		iterable.forEach(new Block<Document>() {
+			
+		    @Override
+		    public void apply(final Document document) {
+		    	System.out.println(document);
+		    	ps.print(document+"\n");
+		    	log(Level.INFO, "Se ha guardado la BD", null);
+		    	
+		    }
+		});
+		ps.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+	}
 	public void existeUsuario(String usu, String contr){
 		
 		FindIterable<Document> iterable = db.getCollection("usuarios").find(
@@ -324,13 +353,15 @@ public class MongoDB {
 			
 		    @Override
 		    public void apply(final Document document) {
-		    	boolean isTrue=false;
-		    	if(document.get("nick").equals(usu)){
-		    		recuperarContraseña(usu, contr);
-		    		isTrue=true;
+		    	
+		    	if(usu.length()>0){
+		    		if(document.get("nick").equals(usu)){
+			    		recuperarContraseña(usu, contr);
+			    		
+		    		}
 		    	}else{
 		    		JOptionPane.showMessageDialog(null, "Usuario inexistente");
-		    		isTrue=false;
+		    		
 		    	}
 		    }
 		});
@@ -341,6 +372,7 @@ public class MongoDB {
 	public void recuperarDatos(){
 		db.getCollection("usuarios").find();
 	}
+
 	public void query3(){
 			
 			MongoClient mongoClient = new MongoClient();
@@ -358,8 +390,27 @@ public class MongoDB {
 			mongoClient.close();
 		
 	}
+	private static Logger logger = null;
 	
+	public static void setLogger( Logger logger ) {
+		MongoDB.logger = logger;
+	}
 	
+	private static void log( Level level, String msg, Throwable excepcion ) {
+		if (logger==null) {  
+			logger = Logger.getLogger( MongoDB.class.getName() ); 
+			logger.setLevel( Level.ALL );  
+			try {
+				logger.addHandler( new FileHandler( "log.xml", true ) );
+			} catch (Exception e) {
+				logger.log( Level.SEVERE, "No se pudo crear fichero de log", e );
+			}
+		}
+		if (excepcion==null)
+			logger.log( level, msg );
+		else
+			logger.log( level, msg, excepcion );
+	}
 	
 	public static void main(String[] args) throws UnknownHostException {
 		MongoClient mongoClient = new MongoClient();
