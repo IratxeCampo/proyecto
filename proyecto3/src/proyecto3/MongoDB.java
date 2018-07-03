@@ -89,8 +89,8 @@ public class MongoDB {
 				.append("email", "jonbart@gmail.com")
 				.append("opiniones", asList(
 						new Document()
-							.append("nombreHotel", "")
-							.append("tituloOpinion", "")
+							.append("nombreHotel", "Deerwood Inn")
+							.append("tituloOpinion", "Normal")
 							.append("opinion", "Es un hotel normal y a precio razonable, mi pareja y yo solo lo "
 									+ "utilizábamos para ir a dormir ya que no buscábamos otra funcionalidad. Lo "
 									+ "que deberían hacer es cambiar las almohadas y poner unas más duras, por lo"
@@ -104,8 +104,8 @@ public class MongoDB {
 				.append("email", "maiial@gmail.com")
 				.append("opiniones", asList(
 						new Document()
-						.append("nombreHotel", "")
-						.append("tituloOpinion", "")
+						.append("nombreHotel", "Boston Court")
+						.append("tituloOpinion", "Publicidad engañosa")
 						.append("opinion", "Es un hotel excelentemente situado, con una recepción "
 								+ "muy agradable y un bar muy luminoso donde se pueden tomar buenos"
 								+ " cocktails. Las habitaciones son un tanto antiguas y no se corresponden a la"
@@ -119,8 +119,8 @@ public class MongoDB {
 				.append("email", "maddi_98@hotmail.es")
 				.append("opinion", asList(
 						new Document()
-							.append("nombreHotel", "")
-							.append("tituloOpinion", "")
+							.append("nombreHotel", "Posada Viena")
+							.append("tituloOpinion", "Correcto")
 							.append("opinion", "buena atención , buen servicio, habitación "
 								+ "confortable y con todo lo necesario para que la estancia sea lo más "
 								+ "agradable posible."))));
@@ -133,8 +133,8 @@ public class MongoDB {
 				.append("email", "art7@hotmail.es")
 				.append("opinion", asList(
 						new Document()
-							.append("nombreHotel", "")
-							.append("tituloOpinion", "")
+							.append("nombreHotel", "Crowne Plaza")
+							.append("tituloOpinion", "Parking dónde")
 							.append("opinion", "la atención del personal del hotel excelente y la habitación"
 									+ " limpia y correcta. Buena insonorizacion de la habitación que garantiza buen "
 									+ "descanso. lo unico malo es que el hotel no dispone de parking propio"))));
@@ -147,8 +147,8 @@ public class MongoDB {
 				.append("email", "mait_14@gmail.com")
 				.append("opinion", asList(
 						new Document()
-							.append("nombreHotel", "")
-							.append("tituloOpinion", "")
+							.append("nombreHotel", "Jumeirah Zabeel Saray")
+							.append("tituloOpinion", "Una decepción")
 							.append("opinion", "Para ser un hotel con buena ubicación y lindo la atención deja mucho que "
 									+ "desear poco o nada de servicio poco personal a pesar de estar pronto al carnaval..."
 									+ " esperaba mucho más. Un desayuno con pocas cosas pocas frutas tres y nada de buenas "
@@ -163,8 +163,8 @@ public class MongoDB {
 				.append("email", "ai_tortilla@yahoo.es")
 				.append("opinion", asList(
 						new Document()
-							.append("nombreHotel", "")
-							.append("tituloOpinion", "")
+							.append("nombreHotel", "Victoria Gate")
+							.append("tituloOpinion", "esperaba otra cosa")
 							.append("opinion", "las comodidades e instalaciones son poco acogedoraspara un hotel de lujo,"
 									+ " especialmente la habitación poco acogedora el conjunto muy impersonal demasiados"
 									+ " espacios vacíos clima un poco frío en la habitación"))));
@@ -177,8 +177,8 @@ public class MongoDB {
 				.append("email", "ane_iturbe@hotmail.es")
 				.append("opinion", asList(
 						new Document()
-							.append("nombreHotel", "")
-							.append("tituloOpinion", "")
+							.append("nombreHotel", "Edgewater")
+							.append("tituloOpinion", "No de los mejores")
 							.append("opinion", "El hotel muy bonito pero incómodo, la "
 									+ "habitación es hermosa pero la cama doble es pequeña y el baño regular."))));
 		db.getCollection("usuarios").insertOne( 
@@ -190,8 +190,8 @@ public class MongoDB {
 				.append("email", "amaia55a@gmail.es")
 				.append("opinion", asList(
 						new Document()
-							.append("nombreHotel", "")
-							.append("tituloOpinion", "")
+							.append("nombreHotel", "Calidad..")
+							.append("tituloOpinion", "French Market Inn")
 							.append("opinion", "El hotel en si esta bastante bien, pero esta mal explotado... "
 									+ "la comida para la categoria que es , y la variedad deja mucho que desear"))));
 		db.getCollection("usuarios").insertOne( 
@@ -203,8 +203,8 @@ public class MongoDB {
 				.append("email", "uni.bertso@opendeusto.es")
 				.append("opinion", asList(
 						new Document()
-							.append("nombreHotel", "")
-							.append("tituloOpinion", "")
+							.append("nombreHotel", "Reefs")
+							.append("tituloOpinion", "sencillamente inolvidable")
 							.append("opinion", "Grandes instalaciones, pero lo mejor fue el trato que recibimos de "
 									+ "todo el personal, un 10, en recepción una esmerada atención, y el personal del "
 									+ "comedor y limpieza siempre con una sonrisa en la cara. Celebraba mi cumpleaños y"
@@ -218,8 +218,8 @@ public class MongoDB {
 				.append("email", "ene_32@hotmail.es")
 				.append("opinion", asList(
 						new Document()
-							.append("nombreHotel", "")
-							.append("tituloOpinion", "")
+							.append("nombreHotel", "Accra")
+							.append("tituloOpinion", "genial como siempre")
 							.append("opinion", "Es un sitio muy agradable y muy relajante el personal es muy "
 									+ "atento y servicial,nosotros somos repetidores van ya 5 estancias es genial."))));
 		db.getCollection("usuarios").insertOne( 
@@ -231,8 +231,8 @@ public class MongoDB {
 				.append("email", "art_12@gmail.com")
 				.append("opinion", asList(
 						new Document()
-							.append("nombreHotel", "")
-							.append("tituloOpinion", "")
+							.append("nombreHotel", "The Buccaneer")
+							.append("tituloOpinion", "Todo menos la piscina")
 							.append("opinion", "Todo fabuloso. La única pega es que la piscina "
 									+ "infantil está muy fria y a consecuencia estaba totalmente vacía."))));
 		db.getCollection("usuarios").insertOne( 
@@ -244,8 +244,8 @@ public class MongoDB {
 				.append("email", "garazi.lauzirika@deusto.es")
 				.append("opinion", asList(
 						new Document()
-							.append("nombreHotel", "")
-							.append("tituloOpinion", "")
+							.append("nombreHotel", "Tranquility Bay")
+							.append("tituloOpinion", "Bien")
 							.append("opinion", "Agradable estancia en un hotel bien ubicado y confortable."))));
 		db.getCollection("usuarios").insertOne( 
 				new Document()
@@ -256,8 +256,8 @@ public class MongoDB {
 				.append("email", "ainho19@gmail.com")
 				.append("opinion", asList(
 						new Document()
-							.append("nombreHotel", "")
-							.append("tituloOpinion", "")
+							.append("nombreHotel", "Grand Oasis")
+							.append("tituloOpinion", "Muy bien")
 							.append("opinion", "Confortable hotel con todos los servicios. Buenas y modernas "
 									+ "instalaciones. Exquisita atención y trato personal. Restaurante buffet con "
 									+ "calida. Situado en una zona centrica de la isla., muy turística."))));
@@ -270,15 +270,15 @@ public class MongoDB {
 				.append("email", "ander_xy@hotmail.es")
 				.append("opinion", asList(
 						new Document()
-							.append("nombreHotel", "")
-							.append("tituloOpinion", "")
+							.append("nombreHotel", "Accra")
+							.append("tituloOpinion", "Genial")
 							.append("opinion", "Mi estancia en el hotel es positiva, muy céntrico, el personal del h"
 									+ "otel muy agradable y muy predispuesto a ayudar. 100% recomendable."),
 						new Document()
-							.append("nombreHotel", "")
-							.append("tituloOpinion", "")
+							.append("nombreHotel", "Skyna Luanda")
+							.append("tituloOpinion", "Satisfecho")
 							.append("opinion", "Maravilloso, sublime, espectacular."))));
-		mongoClient.close();
+		
 		
 	}
 	
@@ -312,7 +312,7 @@ public class MongoDB {
 			    }
 			});
 			
-			mongoClient.close();
+			
 			
 	}
 	public void existeUsuario(String usu, String contr){

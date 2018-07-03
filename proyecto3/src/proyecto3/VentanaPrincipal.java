@@ -12,6 +12,9 @@ import java.net.URL;
 
 import javax.swing.*;
 
+import com.mongodb.Mongo;
+import com.mongodb.MongoClient;
+
 public class VentanaPrincipal extends JFrame {
 	public VentanaPrincipal() {
 		setTitle( "Valortel" );
@@ -45,7 +48,8 @@ public class VentanaPrincipal extends JFrame {
 					System.exit(n);
 					//dispose();
 				}else if(n==0){
-			
+					MongoClient c = new MongoClient();
+					c.close();
 					JOptionPane.showMessageDialog(null, "De acuerdo\nHasta pronto"
 							, "Mensaje de despedida",
 							JOptionPane.INFORMATION_MESSAGE, null);
