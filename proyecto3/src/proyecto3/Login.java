@@ -53,10 +53,6 @@ public class Login extends JFrame {
 		panelSur.add(aceptar);
 		panelSur.add(cancelar);
 		
-//		panelContenido.setLayout();
-//		posicionaLinea(panelContenido, "Nick: ", usuario);
-//		posicionaLinea(panelContenido, "Password: ", contrase�a );
-		
 		panelContenido.add(new JLabel("Nick: "));
 		panelContenido.add(usuario);
 		panelContenido.add(new JLabel("Contraseña: "));
@@ -72,33 +68,14 @@ public class Login extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//comprobarUsu(usuario.getText())&&
+
 				String cont = new String (contraseña.getPassword());
 				String usu = usuario.getText();
 				
 				
 					MongoDB mongo = new MongoDB();
 					mongo.conexion();
-					mongo.existeUsuario(usu, cont);	
-					
-				
-//					textUsuario.setText("");
-//					contraseña.setText("");
-				
-				
-//				
-//				mongo.existeUsuario(usu);
-//				mongo.recuperarContraseña(usu, cont);
-//				System.out.println(cont);
-				
-//				if(true){
-//					System.out.println("Datos correctos"); 
-//				} else {
-//					JLabel mensaje = new JLabel("¡Contraseña o usuario incorrecta!");
-//					panelContenido.add(mensaje);
-//				}
-				
-				
+					mongo.existeUsuario(usu, cont);					
 			}
 			
 		});
@@ -126,106 +103,7 @@ public class Login extends JFrame {
 		
 	}
 	
-//	public boolean comprobarContr(String usu, String contr){
-//		boolean isContraTrue=false;
-//		MongoDB base = new MongoDB();
-//		base.reiniciarMongo();
-//		base.conexion();
-//		MongoClient mongoClient = new MongoClient();
-//		MongoDatabase db = mongoClient.getDatabase("aplicacion");
-//		
-//		FindIterable<Document> iterableContra = db.getCollection("usuarios").find(
-//		        new Document("password", contr));
-//		
-//		
-//		if(iterableContra!=null){
-//			iterableContra.forEach(new Block<Document>(){
-//
-//			@Override
-//			public void apply(Document doc) {
-//				System.out.println(doc.get("password"));
-//				
-//			}
-//			
-//		});
-//				JOptionPane.showMessageDialog(null, "Existe");
-//				isContraTrue=true;
-//			
-//		}else{
-//			JOptionPane.showMessageDialog(null, "No Existe");
-//			isContraTrue=false;
-//		}
-//		iterableContra.forEach(new Block<Document>() {
-//			boolean isTrue=false;
-//		    @Override
-//		    public void apply(final Document document) {
-//		    	if (document.get("password")==contr) {
-//					JOptionPane.showMessageDialog(null, "Funciona");
-//					isTrue=true;
-//					
-//				}else{
-//					JOptionPane.showMessageDialog(null, "No Funciona");
-//					isTrue=false;
-//				}
-//		        
-//		    }
-//		});
-//		
-//		return isContraTrue;
-//		
-//	}
-	public boolean comprobarUsu(String usuario, String contr){
-		boolean isUsuarioTrue=false;
-		MongoDB base = new MongoDB();
-		base.reiniciarMongo();
-		base.conexion();
-		MongoClient mongoClient = new MongoClient();
-		MongoDatabase db = mongoClient.getDatabase("aplicacion");
-		
-		FindIterable<Document> iterableUsu = db.getCollection("usuarios").find(
-		        new Document("nick", usuario));
-		FindIterable<Document> iterableContr = db.getCollection("usuarios").find(
-		        new Document("password", contr));
-		iterableUsu.forEach(new Block<Document>() {
-		    @Override
-		    public void apply(final Document document) {
-		    	if(document.containsKey(usuario)){
-		    		
-		    	}else if(document.size()==0){
-		    		
-		    	}
-		    	
-		        System.out.println(document.get("password"));
-		    }
-		});
-		iterableContr.forEach(new Block<Document>() {
-		    @Override
-		    public void apply(final Document document) {
-		    	if(document.containsKey(contr)){
-		    		
-		    	}
-		    	
-		        System.out.println(document.get("password"));
-		    }
-		});
-		mongoClient.close();
-		
-		
-		if(usuario.length()==3){
-			if(usuario.equals(3)){
-				
-				return isUsuarioTrue=true;
-			}
-		}else{
-			
-			return isUsuarioTrue=false;
-		}return isUsuarioTrue;
-	}
 	
-	
-	public void cargaUsuario(){
-		
-	}
 
 	public static void main(String[] args) {
 		Login v = new Login();

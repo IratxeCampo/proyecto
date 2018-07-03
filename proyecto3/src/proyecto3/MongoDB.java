@@ -330,8 +330,6 @@ public class MongoDB {
 		    		JOptionPane.showMessageDialog(null, "Usuario inexistente");
 		    		isTrue=false;
 		    	}
-		    	
-//		        System.out.println(document.get("nick"));
 		    }
 		});
 		
@@ -363,19 +361,6 @@ public class MongoDB {
 		MongoDB mongo = new MongoDB();
 		mongo.reiniciarMongo();
 		mongo.conexion();
-	
-//	   mongo.query1();
-//	   mongo.query2();
-//	   mongo.query3();
-//	 
-//	    FindIterable<Document> iterable = db.getCollection("usuarios").find(
-//	    		new Document("nick", "Mikel").append("nombreHotel", "Reefs"));
-//	    iterable.forEach(new Block<Document>() {
-//		    @Override
-//		    public void apply(final Document document) {
-//		        System.out.println(document.get("nick"));
-//		    }
-//		});
 	   
 	    mongoClient.close();
 	}
