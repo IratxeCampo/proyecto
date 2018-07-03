@@ -3,20 +3,19 @@ package proyecto3;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
-import java.util.logging.FileHandler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
 
 public class VentanaGuardar extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+
+
 	public VentanaGuardar(){
 		setTitle( "Valortel" );
 		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
