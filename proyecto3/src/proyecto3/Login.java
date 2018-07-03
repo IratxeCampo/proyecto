@@ -74,7 +74,7 @@ public class Login extends JFrame {
 				
 				
 					MongoDB mongo = new MongoDB();
-					mongo.conexion();
+					
 					mongo.existeUsuario(usu, cont);					
 			}
 			
@@ -83,6 +83,8 @@ public class Login extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				VentanaPrincipal v = new VentanaPrincipal();
+				v.setVisible(true);
 				dispose();
 				
 				

@@ -122,6 +122,7 @@ public class VentanaUsuario extends JFrame {
 					JOptionPane.showMessageDialog(null, "Los datos introducidos son correctos\nUsuario registrado correctamente");
 					MongoDB mongo = new MongoDB();
 					mongo.insertUser(nick, contrasenya, email, edad);
+					mongo.recuperarDatos();
 					dispose();
 					}
 					}else if(comprobarContr(contrasenya, trContrasenya)!=true){

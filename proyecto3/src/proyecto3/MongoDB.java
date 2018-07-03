@@ -32,9 +32,12 @@ public class MongoDB {
 				.append("email", email));
 	}
 	
-	public void insertOpinion(String nomHotel, String tituloOpinion, String opinion){
-		
-		db.getCollection("usuarios").insertOne( 
+	public void insertOpinion(String usu, String nomHotel, String tituloOpinion, String opinion){
+
+		FindIterable<Document> iterable = db.getCollection("usuarios").find(
+		        new Document("nick", usu));
+		for (Document document : iterable) {
+			db.getCollection("usuarios").insertOne( 
 				new Document()
 				.append("opiniones", asList(
 						new Document()
@@ -42,7 +45,9 @@ public class MongoDB {
 						.append("tituloOpinion", tituloOpinion)
 						.append("opinion", opinion))
 						)
-		);
+			);
+		}
+		
 	}
 	
 	
@@ -312,9 +317,6 @@ public class MongoDB {
 	}
 	public void existeUsuario(String usu, String contr){
 		
-		reiniciarMongo();
-		conexion();
-		
 		FindIterable<Document> iterable = db.getCollection("usuarios").find(
 		        new Document("nick", usu));
 		
@@ -335,6 +337,9 @@ public class MongoDB {
 		
 		mongoClient.close();
 	
+	}
+	public void recuperarDatos(){
+		db.getCollection("usuarios").find();
 	}
 	public void query3(){
 			
@@ -361,6 +366,7 @@ public class MongoDB {
 		MongoDB mongo = new MongoDB();
 		mongo.reiniciarMongo();
 		mongo.conexion();
+	
 	   
 	    mongoClient.close();
 	}
