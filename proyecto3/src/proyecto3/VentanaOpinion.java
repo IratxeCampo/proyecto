@@ -6,9 +6,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -18,37 +17,37 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
+import javax.swing.border.BevelBorder;
 
 public class VentanaOpinion extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public VentanaOpinion(String usu) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setSize(800, 400);
+		setSize(990, 400);
 		setLocationRelativeTo(null);
 		
 		Font fuente = new Font("Apple Chancery", Font.PLAIN, 20);
-		Font fuente2 = new Font("Apple Chancery", Font.PLAIN, 9);
 		JLabel lUsuario = new JLabel(usu);
 		lUsuario.setFont(fuente);
 		JLabel lTexto = new JLabel("Usuario: ");
 		lTexto.setFont(fuente);
-		JLabel lHotel = new JLabel("*Nombre del hotel");
-		lHotel.setFont(fuente2);
-		JLabel lTitulo = new JLabel("*Título");
-		lTitulo.setFont(fuente2);
-		JLabel lOpinion = new JLabel("*Opinión");
-		lOpinion.setFont(fuente2);
-		JLabel lNota = new JLabel("*Nota");
-		lNota.setFont(fuente2);
-		
+
 		JButton bVolver = new JButton("Volver al menú");
 		JButton bGuardar = new JButton("Guardar");
 		
-		JTextField tHotel = new JTextField("1");
-		JTextField tTitulo = new JTextField("2");
-		JTextArea tOpinion = new JTextArea("3");
-		JTextField tNota = new JTextField("4");
+	
+		JTextField tHotel = new JTextField(12);
+		tHotel.setAlignmentX(CENTER_ALIGNMENT);
+		JTextField tTitulo = new JTextField(12);
+		JTextArea tOpinion = new JTextArea(80,40);
+		tOpinion.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+		JTextField tNota = new JTextField(3);
+		tNota.setToolTipText("Insertar nota entre 0 y 5 de acuerdo a la satisfacción con los servicios recibidos");
 		
 		JProgressBar jp = new JProgressBar();
 		jp.setMaximum(5);
@@ -57,24 +56,36 @@ public class VentanaOpinion extends JFrame {
 		JPanel pCentral = new JPanel();
 		JPanel pSuperior = new JPanel();
 		JPanel pInferior = new JPanel();
+		JPanel panelIzq = new JPanel();
+		JPanel panelDrch = new JPanel();
 		
-		getContentPane().add(pSuperior, BorderLayout.NORTH);
+		
+		pCentral.add(panelIzq);
+		pCentral.add(panelDrch);
+		
 		getContentPane().add(pCentral, BorderLayout.CENTER);
+		getContentPane().add(panelIzq, BorderLayout.WEST);
+		getContentPane().add(panelDrch, BorderLayout.EAST);
+		getContentPane().add(pSuperior, BorderLayout.NORTH);
 		getContentPane().add(pInferior, BorderLayout.SOUTH);
+	
 		
 		pSuperior.setBorder(BorderFactory.createLineBorder(Color.black));
 		pSuperior.add(lTexto);
 		pSuperior.add(lUsuario);
 		
-		pCentral.setLayout(new GridLayout(8,1));
-		pCentral.add(tHotel);
-		pCentral.add(lHotel);
-		pCentral.add(tTitulo);
-		pCentral.add(lTitulo);
-		pCentral.add(tOpinion);
-		pCentral.add(lOpinion);
-		pCentral.add(tNota);
-		pCentral.add(lNota);
+		panelIzq.add(new JLabel(" Introducir nombre del hotel: "));
+		panelIzq.add(tHotel);
+		panelIzq.add(new JLabel(" Introducir título del comentario: "));
+		panelIzq.add(tTitulo);
+		panelIzq.add(new JLabel(" Introducir nota global de satisfacción: "));
+		panelIzq.add(tNota);
+
+		panelDrch.add(new JLabel(" Introducir opinión sobre el hotel: "));
+		panelDrch.add(tOpinion);
+		
+		panelIzq.setLayout(new GridLayout(3,2));
+		panelDrch.setLayout(new GridLayout(3, 3));
 		
 		pInferior.setLayout(new GridLayout(1, 2));
 		pInferior.add(bGuardar);
@@ -99,8 +110,23 @@ public class VentanaOpinion extends JFrame {
 				
 			}
 		});
+		tNota.addKeyListener(new KeyAdapter(){
+
+	
+			@Override
+			public void keyTyped(KeyEvent e) {
+				textCodKeyTyped(e);
+			}
+			
+		});
+		
 		
 	}
+private void textCodKeyTyped(KeyEvent key) {
+	char c = key.getKeyChar();
+	if(c<'0' || c>'5') key.consume();
+}
+	
 public static void main(String[] args) {
 	VentanaOpinion v = new VentanaOpinion("Jon");
 	v.setVisible(true);

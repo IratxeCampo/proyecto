@@ -114,17 +114,17 @@ public class VentanaUsuario extends JFrame {
 				String edad = tEdad.getText();
 				String email = tEmail.getText();
 				
-				if(!email.contains("@")){
-					JOptionPane.showMessageDialog(null, "Email no valido");
-					tEmail.setText("");
-				}
-				
 				if(comprobarContr(contrasenya, trContrasenya)==true){
+					if(!email.contains("@")){
+						JOptionPane.showMessageDialog(null, "Email no valido");
+						tEmail.setText("");
+					}else{
 					JOptionPane.showMessageDialog(null, "Los datos introducidos son correctos\nUsuario registrado correctamente");
 					MongoDB mongo = new MongoDB();
 					mongo.insertUser(nick, contrasenya, email, edad);
-					
-					}else{
+					dispose();
+					}
+					}else if(comprobarContr(contrasenya, trContrasenya)!=true){
 						JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden\nVuelve a intentarlo");
 						tContrasena.setText("");
 						trContrasena.setText("");
@@ -156,13 +156,12 @@ public class VentanaUsuario extends JFrame {
 	
 	public boolean comprobarContr(String contr, String trContr){
 		boolean isContrasenyaTrue=false;
-		if(contr.length()==trContr.length()){
+		if(contr.length()==trContr.length()&&contr.length()>0){
 			if(contr.equals(trContr)){
-				
 				return isContrasenyaTrue=true;
 			}
 		}else{
-			
+			JOptionPane.showMessageDialog(null, "Asegúrate de haber rellenado todos los campos");	
 			return isContrasenyaTrue=false;
 		}return isContrasenyaTrue;
 	}

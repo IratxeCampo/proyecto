@@ -33,8 +33,7 @@ public class VentanaPrincipal extends JFrame {
 		addWindowListener(new WindowAdapter(){
 			@Override
 			public void windowClosing(WindowEvent e) {
-				
-				final ImageIcon icon = new ImageIcon(getClass().getResource("adios.gif"));
+
 
 				int n = JOptionPane.showConfirmDialog(null,"Seguro que quieres salir?", "Confirmar salida", JOptionPane.OK_CANCEL_OPTION);	
 				
@@ -42,14 +41,14 @@ public class VentanaPrincipal extends JFrame {
 
 					JOptionPane.showMessageDialog(null, "De acuerdo\nHasta pronto"
 							, "Mensaje de despedida",
-							JOptionPane.QUESTION_MESSAGE, icon);
+							JOptionPane.QUESTION_MESSAGE, null);
 					System.exit(n);
 					//dispose();
 				}else if(n==0){
 			
 					JOptionPane.showMessageDialog(null, "De acuerdo\nHasta pronto"
 							, "Mensaje de despedida",
-							JOptionPane.INFORMATION_MESSAGE, icon);
+							JOptionPane.INFORMATION_MESSAGE, null);
 					System.exit(n);
 				}else{
 					
@@ -67,7 +66,7 @@ public class VentanaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Login vent = new Login();
 				vent.setVisible(true);
-				dispose();
+				
 			}
 		});
 		
